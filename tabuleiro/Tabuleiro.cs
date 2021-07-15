@@ -34,6 +34,19 @@
             p.posicao = pos;
         }
 
+        public Peca retirarPeca(Posicao pos) //Retira uma peca do tabuleiro
+        {
+            if (peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = peca(pos); //Recebe a peca informada
+            aux.posicao = null; //nulifica a posicao da peca
+            pecas[pos.linha, pos.coluna] = null; //nulifica a posicao da peca no tabuleiro
+            return aux;
+        }
+
+
         public bool existePeca(Posicao pos) //Teste se existe peca na posicao e se a posicao e valida
         {
             validarPosicao(pos);
