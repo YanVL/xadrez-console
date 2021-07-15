@@ -12,6 +12,12 @@
             this.coluna = coluna;
         }
 
+        public void definirValores(int linha, int coluna) //Sobrecarga do metodo Posicao para abreviar linha e coluna na mesma linha 
+        {
+            this.linha = linha;
+            this.coluna = coluna;
+        }
+
         public override string ToString()
         {
             return linha
