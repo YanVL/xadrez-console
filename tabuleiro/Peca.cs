@@ -36,7 +36,7 @@
             return false;
         }
 
-        public bool podeMoverPara(Posicao pos) //Testa se a peca na posicao tem movimentosPossiveis();
+        public bool podeMoverPara(Posicao pos) //Testa se na matriz de movimentos possiveis o destino escolhido e valido
         {
             return movimentosPossiveis()[pos.linha, pos.coluna];
         }
