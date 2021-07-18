@@ -1,4 +1,4 @@
-﻿namespace tabuleiro
+﻿ namespace tabuleiro
 {
     abstract class Peca
     {
@@ -41,7 +41,7 @@
             return false;
         }
 
-        public bool podeMoverPara(Posicao pos) //Testa se na matriz de movimentos possiveis o destino escolhido e valido
+        public bool movimentoPossivel(Posicao pos) //Testa se na matriz de movimentos possiveis o destino escolhido e valido
         {
             return movimentosPossiveis()[pos.linha, pos.coluna];
         }
