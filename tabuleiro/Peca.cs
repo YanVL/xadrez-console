@@ -20,6 +20,11 @@
             qteMovimentos++;
         }
 
+        public void decrementarQteMovimentos()
+        {
+            qteMovimentos--;
+        }
+
         public bool existeMovimentosPossiveis() //Testa se a peca esta bloqueada
         {
             bool[,] mat = movimentosPossiveis(); //Auxiliar recebendo movimentos possiveis de cada peca
