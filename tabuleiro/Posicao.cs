@@ -1,25 +1,20 @@
-﻿namespace tabuleiro
-{
-    class Posicao
-    {
+﻿namespace tabuleiro {
+    class Posicao {
 
         public int linha { get; set; }
         public int coluna { get; set; }
 
-        public Posicao(int linha, int coluna)
-        {
+        public Posicao(int linha, int coluna) {
             this.linha = linha;
             this.coluna = coluna;
         }
 
-        public void definirValores(int linha, int coluna) //Sobrecarga do metodo Posicao para abreviar linha e coluna na mesma linha 
-        {
+        public void definirValores(int linha, int coluna) {
             this.linha = linha;
             this.coluna = coluna;
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return linha
                 + ", "
                 + coluna;
