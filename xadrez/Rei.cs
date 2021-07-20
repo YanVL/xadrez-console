@@ -28,55 +28,55 @@ namespace xadrez {
 
             Posicao pos = new Posicao(0, 0);
 
-            //Acima
+            // acima
             pos.definirValores(posicao.linha - 1, posicao.coluna);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
-            //NE
+            // ne
             pos.definirValores(posicao.linha - 1, posicao.coluna + 1);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
-            //Direita
+            // direita
             pos.definirValores(posicao.linha, posicao.coluna + 1);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
-            //Se
+            // se
             pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
-            //Abaixo
+            // abaixo
             pos.definirValores(posicao.linha + 1, posicao.coluna);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
-            //So
+            // so
             pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
-            //Esquerda
+            // esquerda
             pos.definirValores(posicao.linha, posicao.coluna - 1);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
-            //No
+            // no
             pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
             }
 
             // #jogadaespecial roque
-            if (qteMovimentos == 0 && !partida.xeque) {
+            if (qteMovimentos==0 && !partida.xeque) {
                 // #jogadaespecial roque pequeno
                 Posicao posT1 = new Posicao(posicao.linha, posicao.coluna + 3);
                 if (testeTorreParaRoque(posT1)) {
                     Posicao p1 = new Posicao(posicao.linha, posicao.coluna + 1);
                     Posicao p2 = new Posicao(posicao.linha, posicao.coluna + 2);
-                    if (tab.peca(p1) == null && tab.peca(p2) == null) {
+                    if (tab.peca(p1)==null && tab.peca(p2)==null) {
                         mat[posicao.linha, posicao.coluna + 2] = true;
                     }
                 }
@@ -90,7 +90,8 @@ namespace xadrez {
                         mat[posicao.linha, posicao.coluna - 2] = true;
                     }
                 }
-            }
+            } 
+
 
             return mat;
         }

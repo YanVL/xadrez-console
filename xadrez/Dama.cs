@@ -1,6 +1,7 @@
 ﻿using tabuleiro;
 
 namespace xadrez {
+
     class Dama : Peca {
 
         public Dama(Tabuleiro tab, Cor cor) : base(tab, cor) {
@@ -99,7 +100,6 @@ namespace xadrez {
                 }
                 pos.definirValores(pos.linha + 1, pos.coluna - 1);
             }
-
 
             return mat;
         }

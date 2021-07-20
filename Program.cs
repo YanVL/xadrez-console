@@ -5,10 +5,12 @@ using xadrez;
 namespace xadrez_console {
     class Program {
         static void Main(string[] args) {
+
             try {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
                 while (!partida.terminada) {
+
                     try {
                         Console.Clear();
                         Tela.imprimirPartida(partida);
@@ -18,7 +20,6 @@ namespace xadrez_console {
                         Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoDeOrigem(origem);
 
-                        //Matriz de movimentos possiveis da peca de origem
                         bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
                         Console.Clear();
@@ -36,7 +37,6 @@ namespace xadrez_console {
                         Console.ReadLine();
                     }
                 }
-
                 Console.Clear();
                 Tela.imprimirPartida(partida);
             }
@@ -45,8 +45,6 @@ namespace xadrez_console {
             }
 
             Console.ReadLine();
-
-
         }
     }
 }

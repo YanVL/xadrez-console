@@ -3,6 +3,7 @@ using tabuleiro;
 
 namespace xadrez {
     class PartidaDeXadrez {
+
         public Tabuleiro tab { get; private set; }
         public int turno { get; private set; }
         public Cor jogadorAtual { get; private set; }
@@ -22,7 +23,7 @@ namespace xadrez {
             colocarPecas();
         }
 
-        public Peca excecutaMovimento(Posicao origem, Posicao destino) {
+        public Peca executaMovimento(Posicao origem, Posicao destino) {
             Peca p = tab.retirarPeca(origem);
             p.incrementarQteMovimentos();
             Peca pecaCapturada = tab.retirarPeca(destino);
@@ -81,7 +82,7 @@ namespace xadrez {
         }
 
         public void realizaJogada(Posicao origem, Posicao destino) {
-            Peca pecaCapturada = excecutaMovimento(origem, destino);
+            Peca pecaCapturada = executaMovimento(origem, destino);
 
             if (estaEmXeque(jogadorAtual)) {
                 desfazMovimento(origem, destino, pecaCapturada);
@@ -95,7 +96,7 @@ namespace xadrez {
                 xeque = false;
             }
 
-            if (testeXequeMate(adversaria(jogadorAtual))) {
+            if (testeXequemate(adversaria(jogadorAtual))) {
                 terminada = true;
             }
             else {
@@ -173,7 +174,7 @@ namespace xadrez {
         public bool estaEmXeque(Cor cor) {
             Peca R = rei(cor);
             if (R == null) {
-                throw new TabuleiroException("Não existe rei da cor " + cor + " no tabuleiro!");
+                throw new TabuleiroException("Não tem rei da cor " + cor + " no tabuleiro!");
             }
             foreach (Peca x in pecasEmJogo(adversaria(cor))) {
                 bool[,] mat = x.movimentosPossiveis();
@@ -184,19 +185,18 @@ namespace xadrez {
             return false;
         }
 
-        public bool testeXequeMate(Cor cor) {
+        public bool testeXequemate(Cor cor) {
             if (!estaEmXeque(cor)) {
                 return false;
             }
-
             foreach (Peca x in pecasEmJogo(cor)) {
                 bool[,] mat = x.movimentosPossiveis();
-                for (int i = 0; i < tab.linhas; i++) {
-                    for (int j = 0; j < tab.colunas; j++) {
+                for (int i=0; i<tab.linhas; i++) {
+                    for (int j=0; j<tab.colunas; j++) {
                         if (mat[i, j]) {
                             Posicao origem = x.posicao;
                             Posicao destino = new Posicao(i, j);
-                            Peca pecaCapturada = excecutaMovimento(origem, destino);
+                            Peca pecaCapturada = executaMovimento(origem, destino);
                             bool testeXeque = estaEmXeque(cor);
                             desfazMovimento(origem, destino, pecaCapturada);
                             if (!testeXeque) {
@@ -235,8 +235,8 @@ namespace xadrez {
             colocarNovaPeca('a', 8, new Torre(tab, Cor.Preta));
             colocarNovaPeca('b', 8, new Cavalo(tab, Cor.Preta));
             colocarNovaPeca('c', 8, new Bispo(tab, Cor.Preta));
-            colocarNovaPeca('d', 8, new Rei(tab, Cor.Preta, this));
-            colocarNovaPeca('e', 8, new Dama(tab, Cor.Preta));
+            colocarNovaPeca('d', 8, new Dama(tab, Cor.Preta));
+            colocarNovaPeca('e', 8, new Rei(tab, Cor.Preta, this));
             colocarNovaPeca('f', 8, new Bispo(tab, Cor.Preta));
             colocarNovaPeca('g', 8, new Cavalo(tab, Cor.Preta));
             colocarNovaPeca('h', 8, new Torre(tab, Cor.Preta));

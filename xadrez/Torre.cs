@@ -2,6 +2,7 @@
 
 namespace xadrez {
     class Torre : Peca {
+
         public Torre(Tabuleiro tab, Cor cor) : base(tab, cor) {
         }
 
@@ -19,7 +20,7 @@ namespace xadrez {
 
             Posicao pos = new Posicao(0, 0);
 
-            //Acima
+            // acima
             pos.definirValores(posicao.linha - 1, posicao.coluna);
             while (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
@@ -28,7 +29,8 @@ namespace xadrez {
                 }
                 pos.linha = pos.linha - 1;
             }
-            //Abaixo
+
+            // abaixo
             pos.definirValores(posicao.linha + 1, posicao.coluna);
             while (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
@@ -37,7 +39,8 @@ namespace xadrez {
                 }
                 pos.linha = pos.linha + 1;
             }
-            //Direita
+
+            // direita
             pos.definirValores(posicao.linha, posicao.coluna + 1);
             while (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
@@ -46,7 +49,8 @@ namespace xadrez {
                 }
                 pos.coluna = pos.coluna + 1;
             }
-            //Esquerda
+
+            // esquerda
             pos.definirValores(posicao.linha, posicao.coluna - 1);
             while (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
@@ -55,6 +59,7 @@ namespace xadrez {
                 }
                 pos.coluna = pos.coluna - 1;
             }
+
             return mat;
         }
     }
